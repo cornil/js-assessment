@@ -1,36 +1,34 @@
-if (typeof define !== 'function') { var define = require('amdefine')(module); }
+if (typeof define !== 'function') {
+  var define = require('amdefine')(module);
+}
 
-define(function() {
+define(function () {
   return {
-    containsNumber : function(str) {
+    containsNumber: function (str) {
       return /[0-9]/.test(str);
     },
 
-    containsRepeatingLetter : function(str) {
+    containsRepeatingLetter: function (str) {
       return /([a-z])(\1+)/i.test(str)
     },
 
-    endsWithVowel : function(str) {
+    endsWithVowel: function (str) {
       return /[aeiouy]$/i.test(str)
     },
 
-    captureThreeNumbers : function(str) {
-      var test = /\d{3}/.exec(str)
-      if (test == null){
+    captureThreeNumbers: function (str) {
+      if (/\d{3}/.test(str)) {
+        return /\d{3}/.exec(str)[0];
+      } else {
         return false;
-      }
-      else{
-        return test;
-      }
+      };
     },
 
-    matchesPattern : function(str) {
-
+    matchesPattern: function (str) {
+      return /^\d{3}\-\d{3}\-\d{4}$/.test(str)
     },
-    isUSD : function(str) {
-
+    isUSD: function (str) {
+      return /^\$\d{1,3}(,\d{3})*(\.\d{2})?$/.test(str);
     }
   };
 });
-
-console.log(captureThreeNumbers('abc123'));

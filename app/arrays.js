@@ -1,62 +1,93 @@
-if (typeof define !== 'function') { var define = require('amdefine')(module); }
+if (typeof define !== 'function') {
+  var define = require('amdefine')(module);
+}
 
-define(function() {
+define(function () {
   return {
-    indexOf : function(arr, item) {
+    indexOf: function (arr, item) {
       return arr.indexOf(item);
     },
 
-    sum : function(arr) {
-      var result = 0;
-      arr.forEach(function(item){ result += item});
-      return result;
+    sum: function (arr) {
+      var res = 0;
+      arr.forEach(function (item) {
+        res += item
+      });
+      return res;
     },
 
-    remove : function(arr, item) {
+    remove: function (arr, item) {
+      res = arr;
+      while (res.indexOf(item) != -1) {
+        res.splice(res.indexOf(item), 1)
+      }
+      return res;
+    },
+
+    removeWithoutCopy: function (arr, item) {
+      res = arr;
+      while (res.indexOf(item) != -1) {
+        res.splice(res.indexOf(item), 1)
+      }
+      return arr;
+    },
+
+    append: function (arr, item) {
+      arr.push(item);
+      return arr
+    },
+
+    truncate: function (arr) {
+      arr.splice(arr.length - 1, 1);
+      return arr
+    },
+
+    prepend: function (arr, item) {
+      arr.unshift(item);
+      return arr;
+    },
+
+    curtail: function (arr) {
+      arr.splice(0, 1);
+      return arr;
+    },
+
+    concat: function (arr1, arr2) {
+      res = [];
+      res = res.concat(arr1, arr2);
+      return res;
+    },
+
+    insert: function (arr, item, index) {
+      arr.splice(index, 0, item);
+      return arr;
+    },
+
+    count: function (arr, item) {
+      res = 0;
+      arr.forEach(function (ele) {
+        if (item == ele) {
+          res++;
+        }
+      });
+
+      return res;
+    },
+
+    duplicates: function (arr) {
 
     },
 
-    removeWithoutCopy : function(arr, item) {
+    square: function (arr) {
+      res = [];
+      arr.forEach(function (ele) {
+        res.push(ele * ele);
+      });
 
+      return res;
     },
 
-    append : function(arr, item) {
-
-    },
-
-    truncate : function(arr) {
-
-    },
-
-    prepend : function(arr, item) {
-
-    },
-
-    curtail : function(arr) {
-
-    },
-
-    concat : function(arr1, arr2) {
-
-    },
-
-    insert : function(arr, item, index) {
-
-    },
-
-    count : function(arr, item) {
-
-    },
-
-    duplicates : function(arr) {
-
-    },
-
-    square : function(arr) {
-
-    },
-
-    findAllOccurrences : function(arr, target) {
+    findAllOccurrences: function (arr, target) {
 
     }
   };
